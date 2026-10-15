@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: repo: lapoderosaazulfm/la-poderosa-azul-website
+  repo:lapoderosaazulfm/la-poderosa-azul-website
   branch: main
   # Configure a supported GitHub OAuth provider before using /admin.
 media_folder: "assets/uploads"
