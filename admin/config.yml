@@ -1,0 +1,89 @@
+backend:
+  name: github
+  repo: REPLACE_WITH_GITHUB_USERNAME/REPLACE_WITH_REPOSITORY
+  branch: main
+  # Configure a supported GitHub OAuth provider before using /admin.
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+site_url: https://lapoderosaazul.com
+locale: es
+publish: true
+collections:
+  - name: videos
+    label: Videos
+    files:
+      - label: Biblioteca de videos
+        name: video_library
+        file: content/videos.json
+        fields:
+          - label: Videos
+            name: items
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - {label: Título, name: title, widget: string}
+              - {label: Enlace de YouTube, name: youtube, widget: string, hint: 'Enlace youtube.com/watch?v=... o youtu.be/...'}
+              - {label: Descripción, name: description, widget: text, required: false}
+              - {label: Fecha, name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false}
+  - name: news
+    label: Noticias
+    files:
+      - label: Publicaciones
+        name: news_library
+        file: content/news.json
+        fields:
+          - label: Noticias
+            name: items
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - {label: Título, name: title, widget: string}
+              - {label: Resumen, name: summary, widget: text}
+              - {label: Imagen, name: image, widget: image, required: false}
+              - {label: Fecha, name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD'}
+  - name: programs
+    label: Programación
+    files:
+      - label: Programas
+        name: programs_library
+        file: content/programs.json
+        fields:
+          - label: Programas
+            name: items
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - {label: Nombre del programa, name: title, widget: string}
+              - {label: Locutor, name: host, widget: string}
+              - {label: Día y hora, name: airtime, widget: string}
+              - {label: Descripción, name: description, widget: text, required: false}
+  - name: hosts
+    label: Locutores
+    files:
+      - label: Perfiles
+        name: hosts_library
+        file: content/hosts.json
+        fields:
+          - label: Locutores
+            name: items
+            widget: list
+            summary: '{{fields.name}}'
+            fields:
+              - {label: Nombre, name: name, widget: string}
+              - {label: Biografía, name: bio, widget: text}
+              - {label: Foto, name: photo, widget: image, required: false}
+  - name: sponsors
+    label: Patrocinadores
+    files:
+      - label: Anuncios
+        name: sponsors_library
+        file: content/sponsors.json
+        fields:
+          - label: Anuncios
+            name: items
+            widget: list
+            summary: '{{fields.name}}'
+            fields:
+              - {label: Nombre, name: name, widget: string}
+              - {label: Imagen, name: image, widget: image, required: false}
+              - {label: Enlace, name: url, widget: string, required: false}
